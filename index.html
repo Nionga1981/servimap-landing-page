@@ -3,23 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="ServiMapp - El marketplace #1 de servicios locales con geolocalización. Encuentra profesionales verificados cerca de ti o gana dinero ofreciendo tus servicios.">
+    <meta name="description" content="ServiMappp - El marketplace #1 de servicios locales con geolocalización. Encuentra profesionales verificados cerca de ti o gana dinero ofreciendo tus servicios.">
     <meta name="keywords" content="servicios locales, profesionales, marketplace, geolocalización, ServiMapp, trabajos, prestadores">
     <meta name="author" content="ServiMapp">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate, max-age=0">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <meta name="last-modified" content="2025-10-21T18:00:00Z">
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://servi-map.com/">
     <meta property="og:title" content="ServiMapp - El Marketplace #1 de Servicios Locales">
     <meta property="og:description" content="Encuentra profesionales verificados cerca de ti o gana dinero ofreciendo tus servicios. 200+ categorías disponibles.">
-    <meta property="og:image" content="assets/images/og-image.jpg">
+    <meta property="og:image" content="assets/images/ServiMapplogofinal.jpg">
     
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://servi-map.com/">
     <meta property="twitter:title" content="ServiMapp - El Marketplace #1 de Servicios Locales">
     <meta property="twitter:description" content="Encuentra profesionales verificados cerca de ti o gana dinero ofreciendo tus servicios. 200+ categorías disponibles.">
-    <meta property="twitter:image" content="assets/images/og-image.jpg">
+    <meta property="twitter:image" content="assets/images/ServiMapplogofinal.jpg">
     
     <!-- Schema.org markup for Google -->
     <script type="application/ld+json">
@@ -32,9 +36,10 @@
         "telephone": "+52-667-103-8501",
         "email": "fernandobillard@gmail.com",
         "sameAs": [
-            "https://www.facebook.com/servimap",
-            "https://www.instagram.com/servimap",
-            "https://www.twitter.com/servimap"
+            "https://www.instagram.com/servimapp/",
+            "https://www.facebook.com/profile.php?id=61579655865058",
+            "https://www.tiktok.com/@servimapp",
+            "https://www.youtube.com/@ServiMapp"
         ],
         "aggregateRating": {
             "@type": "AggregateRating",
@@ -47,16 +52,16 @@
     <title>ServiMapp - El Marketplace #1 de Servicios Locales</title>
     
     <!-- Favicon -->
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/icon-192x192.png">
-    <link rel="apple-touch-icon" href="assets/icons/icon-192x192.png">
+    <link rel="icon" type="image/jpeg" sizes="32x32" href="assets/images/ServiMapplogofinal.jpg">
+    <link rel="apple-touch-icon" href="assets/images/ServiMapplogofinal.jpg">
     
     <!-- Preload critical resources -->
     <link rel="preload" href="css/landing.css" as="style">
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" as="style">
     
     <!-- CSS -->
-    <link rel="stylesheet" href="css/landing.css">
-    
+    <link rel="stylesheet" href="css/landing.css?v=20251107003">
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -76,7 +81,7 @@
     <nav class="navbar" id="navbar">
         <div class="nav-container">
             <div class="nav-brand">
-                <img src="assets/images/logobaseok.jpg" alt="ServiMapp" class="nav-logo">
+                <img src="assets/images/ServiMapplogofinal.jpg" alt="ServiMapp" class="nav-logo">
                 <span class="nav-brand-text">ServiMapp</span>
             </div>
             
@@ -85,11 +90,7 @@
                 <a href="#como-funciona" class="nav-link">Cómo funciona</a>
                 <a href="#servicios" class="nav-link">Servicios</a>
                 <a href="#testimonios" class="nav-link">Testimonios</a>
-                <a href="#descargar" class="nav-link">App</a>
-                <div class="nav-buttons">
-                    <button class="btn btn-secondary" onclick="openProviderModal()">Soy Prestador</button>
-                    <button class="btn btn-primary" onclick="openClientModal()">Buscar Servicios</button>
-                </div>
+                <a href="#" onclick="event.preventDefault(); openComingSoonModal();" class="nav-link">App</a>
             </div>
             
             <button class="nav-toggle" id="nav-toggle">
@@ -109,48 +110,30 @@
                     <span>#1 en Servicios Locales</span>
                 </div>
                 <h1 class="hero-title">
-                    Encuentra el <span class="hero-highlight">profesional perfecto</span> cerca de ti
+                    El primer <span class="hero-highlight">buscador de servicios a domicilio</span> y negocios cerca de ti!
                 </h1>
                 <p class="hero-description">
                     200+ categorías de servicios, profesionales verificados, geolocalización en tiempo real y videollamadas para cotizaciones. Todo en una sola plataforma.
                 </p>
-                
-                <!-- Search Bar -->
-                <div class="hero-search">
-                    <div class="search-container">
-                        <div class="search-input">
-                            <i class="fas fa-search search-icon"></i>
-                            <input type="text" placeholder="¿Qué servicio necesitas?" id="service-search">
-                        </div>
-                        <div class="location-input">
-                            <i class="fas fa-map-marker-alt location-icon"></i>
-                            <input type="text" placeholder="Tu ubicación" id="location-search">
-                            <button class="location-btn" onclick="getCurrentLocation()">
-                                <i class="fas fa-crosshairs"></i>
-                            </button>
-                        </div>
-                        <button class="search-btn" onclick="performSearch()">
-                            <i class="fas fa-search"></i>
-                            <span>Buscar</span>
-                        </button>
-                    </div>
-                </div>
-                
+
                 <!-- Quick Categories -->
                 <div class="quick-categories">
-                    <span class="categories-label">Populares:</span>
-                    <button class="category-chip" onclick="searchCategory('limpieza')">
+                    <span class="categories-label">Populares en la app:</span>
+                    <span class="category-chip">
+                        <i class="fas fa-user-md"></i> Médicos
+                    </span>
+                    <span class="category-chip">
                         <i class="fas fa-broom"></i> Limpieza
-                    </button>
-                    <button class="category-chip" onclick="searchCategory('plomeria')">
-                        <i class="fas fa-wrench"></i> Plomería
-                    </button>
-                    <button class="category-chip" onclick="searchCategory('electricidad')">
-                        <i class="fas fa-bolt"></i> Electricidad
-                    </button>
-                    <button class="category-chip" onclick="searchCategory('jardineria')">
-                        <i class="fas fa-leaf"></i> Jardinería
-                    </button>
+                    </span>
+                    <span class="category-chip">
+                        <i class="fas fa-tools"></i> Reparaciones
+                    </span>
+                    <span class="category-chip">
+                        <i class="fas fa-cut"></i> Belleza
+                    </span>
+                    <span class="category-chip">
+                        <i class="fas fa-paw"></i> Mascotas
+                    </span>
                 </div>
                 
                 <!-- Trust Indicators -->
@@ -175,36 +158,8 @@
             </div>
             
             <div class="hero-visual">
-                <div class="hero-phone">
-                    <img src="assets/images/app-preview.png" alt="App ServiMapp" class="phone-screen">
-                    <div class="floating-cards">
-                        <div class="floating-card card-1">
-                            <div class="card-avatar">
-                                <img src="assets/images/avatar-1.png" alt="Profesional">
-                            </div>
-                            <div class="card-info">
-                                <div class="card-name">María González</div>
-                                <div class="card-service">Limpieza doméstica</div>
-                                <div class="card-rating">
-                                    <i class="fas fa-star"></i> 4.9 • $25/hr
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="floating-card card-2">
-                            <div class="card-content">
-                                <i class="fas fa-video card-icon"></i>
-                                <span>Videollamada disponible</span>
-                            </div>
-                        </div>
-                        
-                        <div class="floating-card card-3">
-                            <div class="card-content">
-                                <i class="fas fa-shield-alt card-icon"></i>
-                                <span>100% Verificado</span>
-                            </div>
-                        </div>
-                    </div>
+                <div class="hero-logo-container">
+                    <img src="assets/images/ServiMapplogofinal.jpg" alt="ServiMapp Logo" class="hero-logo-main">
                 </div>
             </div>
         </div>
@@ -215,7 +170,7 @@
         <div class="container">
             <div class="section-header">
                 <h2>¿Por qué elegir ServiMapp?</h2>
-                <p>La plataforma más completa para servicios locales</p>
+                <p>La plataforma más completa en servicios locales a domicilio y negocios cerca de ti</p>
             </div>
             
             <div class="value-grid">
@@ -245,7 +200,7 @@
                 
                 <div class="value-card">
                     <div class="value-icon">
-                        <i class="fas fa-shield-check"></i>
+                        <i class="fas fa-shield-alt"></i>
                     </div>
                     <h3>100% Verificados</h3>
                     <p>Todos los profesionales pasan verificación de identidad y background check.</p>
@@ -270,98 +225,788 @@
         </div>
     </section>
 
-    <!-- How It Works -->
-    <section class="how-it-works" id="como-funciona">
+    <!-- Ecosystem Interactivo -->
+    <section class="ecosystem-interactive" id="como-funciona">
         <div class="container">
             <div class="section-header">
-                <h2>Cómo funciona ServiMapp</h2>
-                <p>Simple, rápido y seguro</p>
+                <h2>Descubre el Ecosistema ServiMapp</h2>
+                <p>Múltiples formas de participar, múltiples oportunidades de éxito</p>
             </div>
-            
-            <div class="how-tabs">
-                <button class="tab-btn active" onclick="showTab('client')">Para Clientes</button>
-                <button class="tab-btn" onclick="showTab('provider')">Para Prestadores</button>
+
+            <div class="ecosystem-tabs">
+                <button class="eco-tab active" data-tab="usuarios">
+                    <i class="fas fa-search"></i>
+                    <span>Para Usuarios</span>
+                </button>
+                <button class="eco-tab" data-tab="prestadores">
+                    <i class="fas fa-tools"></i>
+                    <span>Para Prestadores</span>
+                </button>
+                <button class="eco-tab" data-tab="negocios">
+                    <i class="fas fa-building"></i>
+                    <span>Negocios Fijos</span>
+                </button>
+                <button class="eco-tab" data-tab="embajadores">
+                    <i class="fas fa-users"></i>
+                    <span>Servimappers</span>
+                </button>
+                <button class="eco-tab" data-tab="comunidades">
+                    <i class="fas fa-heart"></i>
+                    <span>Comunidades</span>
+                </button>
             </div>
-            
-            <div class="tab-content active" id="tab-client">
-                <div class="steps-grid">
-                    <div class="step">
-                        <div class="step-number">1</div>
-                        <div class="step-content">
-                            <h3>Busca y Encuentra</h3>
-                            <p>Describe tu necesidad y encuentra profesionales verificados cerca de ti con disponibilidad en tiempo real.</p>
+
+            <!-- Usuarios -->
+            <div class="eco-content active" id="usuarios">
+                <div class="eco-grid">
+                    <div class="eco-info">
+                        <h3>Encuentra Servicios de Calidad</h3>
+                        <p class="eco-description">
+                            Accede a miles de profesionales verificados cerca de ti. Simple, rápido y seguro.
+                        </p>
+
+                        <div class="eco-highlights">
+                            <div class="highlight-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <div>
+                                    <h4>Geolocalización en Tiempo Real</h4>
+                                    <p>Encuentra profesionales disponibles cerca de ti al instante</p>
+                                </div>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-video"></i>
+                                <div>
+                                    <h4>Videollamadas Gratuitas</h4>
+                                    <p>Cotiza por videollamada HD antes de contratar cualquier servicio</p>
+                                </div>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-shield-check"></i>
+                                <div>
+                                    <h4>Profesionales 100% Verificados</h4>
+                                    <p>Verificación de identidad y background check completo</p>
+                                </div>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-list"></i>
+                                <div>
+                                    <h4>200+ Categorías Disponibles</h4>
+                                    <p>Desde limpieza hasta tecnología, encuentra cualquier servicio</p>
+                                </div>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-headset"></i>
+                                <div>
+                                    <h4>Soporte 24/7</h4>
+                                    <p>Atención al cliente disponible las 24 horas del día</p>
+                                </div>
+                            </div>
                         </div>
-                        <div class="step-visual">
-                            <i class="fas fa-search"></i>
+
+                        <div class="eco-cta">
+                            <button class="btn btn-primary btn-large" onclick="openComingSoonModal()">
+                                <i class="fas fa-mobile-alt"></i>
+                                Descargar App
+                            </button>
                         </div>
                     </div>
-                    
-                    <div class="step">
-                        <div class="step-number">2</div>
-                        <div class="step-content">
-                            <h3>Cotiza por Video</h3>
-                            <p>Habla directo con el profesional por videollamada HD. Ve su trabajo anterior y negocia el precio.</p>
-                        </div>
-                        <div class="step-visual">
-                            <i class="fas fa-video"></i>
-                        </div>
-                    </div>
-                    
-                    <div class="step">
-                        <div class="step-number">3</div>
-                        <div class="step-content">
-                            <h3>Contrata y Paga</h3>
-                            <p>Confirma el servicio, paga de forma segura y recibe actualizaciones en tiempo real del progreso.</p>
-                        </div>
-                        <div class="step-visual">
-                            <i class="fas fa-handshake"></i>
+
+                    <div class="eco-visual">
+                        <div class="user-stats">
+                            <div class="stat-card">
+                                <div class="stat-number">50K+</div>
+                                <div class="stat-label">Profesionales</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-number">500K+</div>
+                                <div class="stat-label">Servicios</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-number">4.8★</div>
+                                <div class="stat-label">Calificación</div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            
-            <div class="tab-content" id="tab-provider">
-                <div class="steps-grid">
-                    <div class="step">
-                        <div class="step-number">1</div>
-                        <div class="step-content">
-                            <h3>Regístrate Gratis</h3>
-                            <p>Crea tu perfil profesional, verifica tu identidad y agrega tus servicios y tarifas.</p>
+
+            <!-- Prestadores -->
+            <div class="eco-content" id="prestadores">
+                <div class="eco-grid">
+                    <div class="eco-info">
+                        <h3>Gana Dinero con tus Habilidades</h3>
+                        <p class="eco-description">
+                            Únete a miles de profesionales que ya generan ingresos extra con ServiMapp.
+                        </p>
+
+                        <div class="eco-highlights">
+                            <div class="highlight-item">
+                                <i class="fas fa-percentage"></i>
+                                <div>
+                                    <h4>Conserva el 90% de tus Ganancias</h4>
+                                    <p>Sin comisiones abusivas. Tú trabajas, tú ganas</p>
+                                </div>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-users-cog"></i>
+                                <div>
+                                    <h4>Acceso a Miles de Clientes</h4>
+                                    <p>Clientes verificados automáticamente buscando tus servicios</p>
+                                </div>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-credit-card"></i>
+                                <div>
+                                    <h4>Pagos Seguros y Puntuales</h4>
+                                    <p>Pago automático protegido tras completar cada servicio</p>
+                                </div>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-toolbox"></i>
+                                <div>
+                                    <h4>Herramientas Profesionales</h4>
+                                    <p>Dashboard completo, chat, videollamadas y más</p>
+                                </div>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-clock"></i>
+                                <div>
+                                    <h4>Tú Decides Cuándo Trabajar</h4>
+                                    <p>Flexibilidad total: elige tus horarios y ubicaciones</p>
+                                </div>
+                            </div>
                         </div>
-                        <div class="step-visual">
-                            <i class="fas fa-user-plus"></i>
+
+                        <div class="earnings-example" style="display: none;">
+                            <h4>Potencial de Ingresos:</h4>
+                            <div class="earnings-grid">
+                                <div class="earning-item">
+                                    <span class="service">Limpieza</span>
+                                    <span class="earning">$15-25/hr</span>
+                                </div>
+                                <div class="earning-item">
+                                    <span class="service">Plomería</span>
+                                    <span class="earning">$25-40/hr</span>
+                                </div>
+                                <div class="earning-item">
+                                    <span class="service">Tecnología</span>
+                                    <span class="earning">$35-60/hr</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="eco-cta">
+                            <button class="btn btn-secondary btn-large" onclick="openComingSoonModal()">
+                                <i class="fas fa-rocket"></i>
+                                Empezar a Ganar
+                            </button>
                         </div>
                     </div>
-                    
-                    <div class="step">
-                        <div class="step-number">2</div>
-                        <div class="step-content">
-                            <h3>Recibe Solicitudes</h3>
-                            <p>Clientes cercanos te contactarán automáticamente. Responde y cotiza por videollamada.</p>
-                        </div>
-                        <div class="step-visual">
-                            <i class="fas fa-bell"></i>
-                        </div>
-                    </div>
-                    
-                    <div class="step">
-                        <div class="step-number">3</div>
-                        <div class="step-content">
-                            <h3>Trabaja y Cobra</h3>
-                            <p>Realiza el servicio, recibe pago automático y conserva el 90% de tus ganancias.</p>
-                        </div>
-                        <div class="step-visual">
-                            <i class="fas fa-dollar-sign"></i>
+
+                    <div class="eco-visual">
+                        <div class="provider-stats">
+                            <div class="stat-card">
+                                <div class="stat-number">90%</div>
+                                <div class="stat-label">Te quedas</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-number">24/7</div>
+                                <div class="stat-label">Disponible</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-number">$25K+</div>
+                                <div class="stat-label">Promedio/mes</div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                
-                <div class="provider-cta">
-                    <h3>¿Listo para ganar dinero con tus habilidades?</h3>
-                    <button class="btn btn-primary btn-large" onclick="openProviderSignup()">
-                        <i class="fas fa-rocket"></i>
-                        Empezar a Ganar
-                    </button>
+            </div>
+
+            <!-- Negocios Fijos -->
+            <div class="eco-content" id="negocios">
+                <div class="eco-grid">
+                    <div class="eco-info">
+                        <h3>Membresía para Negocios Fijos</h3>
+                        <p class="eco-description">
+                            La publicidad más inteligente y económica del mercado. Aparece exactamente cuando tus clientes te buscan.
+                        </p>
+
+                        <div class="eco-highlights">
+                            <div class="highlight-item">
+                                <i class="fas fa-tag"></i>
+                                <div>
+                                    <h4>¡Oferta de Lanzamiento!</h4>
+                                    <p><strong>3 meses por solo $500 MXN</strong> - Paga 1 mes y recibe 2 GRATIS. Después solo $500/mes</p>
+                                </div>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-bullseye"></i>
+                                <div>
+                                    <h4>Publicidad 100% Estratégica</h4>
+                                    <p>Aparece SOLO a usuarios que te están buscando activamente en tu rango de distancia</p>
+                                </div>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-dollar-sign"></i>
+                                <div>
+                                    <h4>Sin Comisiones por Ventas</h4>
+                                    <p>Solo pagas por aparecer. Todo lo que vendas es 100% tuyo. Sin comisiones ocultas</p>
+                                </div>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-brain"></i>
+                                <div>
+                                    <h4>Inteligencia Artificial Personalizada</h4>
+                                    <p>Nuestra IA recomienda tu negocio según preferencias y criterios de búsqueda del usuario</p>
+                                </div>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-chart-bar"></i>
+                                <div>
+                                    <h4>Ahorra hasta 83% en Publicidad</h4>
+                                    <p>Publicidad en TikTok/Google/Meta: <s>$3,000/mes</s> | ServiMapp: <strong>$500/mes</strong></p>
+                                </div>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-users-cog"></i>
+                                <div>
+                                    <h4>Solo Clientes Potenciales Reales</h4>
+                                    <p>Cada persona que llegue a tu negocio viene con alta probabilidad de conversión</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="business-benefits">
+                            <h4>¿Por qué ServiMapp es diferente?</h4>
+                            <ul class="benefits-list">
+                                <li>✅ <strong>Publicidad geolocalizada:</strong> Apareces solo a usuarios cerca de tu ubicación</li>
+                                <li>✅ <strong>Momento perfecto:</strong> Tu anuncio se muestra cuando te buscan, no de forma invasiva</li>
+                                <li>✅ <strong>Sin desperdiciar dinero:</strong> No pagas por clicks o impresiones sin valor</li>
+                                <li>✅ <strong>Precio fijo:</strong> $500/mes sin importar cuántos clientes lleguen</li>
+                                <li>✅ <strong>IA trabajando para ti:</strong> Recomendaciones automáticas 24/7</li>
+                            </ul>
+                        </div>
+
+                        <div class="eco-cta">
+                            <a href="#" onclick="event.preventDefault(); openComingSoonModal();" class="btn btn-primary btn-large">
+                                <i class="fas fa-download"></i>
+                                Descargar App - Comenzar Ahora
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="eco-visual">
+                        <div class="business-stats">
+                            <div class="stat-card">
+                                <div class="stat-number">$500</div>
+                                <div class="stat-label">Por 3 Meses</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-number">0%</div>
+                                <div class="stat-label">Comisiones</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-number">83%</div>
+                                <div class="stat-label">Ahorro vs Otros</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Servimappers -->
+            <div class="eco-content" id="embajadores">
+                <div class="eco-grid">
+                    <div class="eco-info">
+                        <h3>Conviértete en Servimapper</h3>
+                        <p class="eco-description">
+                            <strong>¿Qué es un Servimapper?</strong> Un emprendedor digital que conecta a su comunidad con ServiMapp, ganando comisiones recurrentes por cada persona que ayuda a registrarse. Sin jefes, sin horarios, con ingresos ilimitados.
+                        </p>
+                        <p class="eco-description">
+                            La oportunidad de ingresos más atractiva: gana más que un trabajo tradicional desde el primer mes.
+                        </p>
+
+                        <!-- ESTILOS CALCULADORA -->
+                        <style>
+                            .goal-calculator { background: white; padding: 2rem; border-radius: 12px; margin-bottom: 2rem; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); }
+                            .goal-calculator h3 { margin: 0 0 0.5rem 0; color: #1f2937; display: flex; align-items: center; gap: 0.5rem; }
+                            .goal-input-group { display: flex; gap: 1rem; align-items: flex-end; margin-bottom: 2rem; }
+                            .goal-input-wrapper { flex: 1; }
+                            .goal-input-wrapper label { display: block; margin-bottom: 0.5rem; font-weight: 600; color: #374151; }
+                            .goal-input-wrapper input { width: 100%; padding: 1rem; border: 2px solid #e5e7eb; border-radius: 8px; font-size: 1.125rem; font-weight: 600; color: #1f2937; }
+                            .goal-input-wrapper input:focus { outline: none; border-color: #209ded; box-shadow: 0 0 0 3px rgba(32, 157, 237, 0.1); }
+                            .goal-calculate-btn { padding: 1rem 2rem; background: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%); color: white; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3); }
+                            .goal-calculate-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(245, 158, 11, 0.4); }
+                            .scenarios-section { background: white; padding: 1.5rem; border-radius: 12px; margin-bottom: 2rem; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); }
+                            .scenarios-section h3 { margin: 0 0 1rem 0; color: #1f2937; }
+                            .scenario-buttons { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; }
+                            .scenario-btn { padding: 1rem; border: 2px solid #e5e7eb; border-radius: 8px; background: white; cursor: pointer; transition: all 0.3s ease; text-align: center; }
+                            .scenario-btn:hover { border-color: #209ded; background: #f0f9ff; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(32, 157, 237, 0.2); }
+                            .scenario-btn .icon { font-size: 1.5rem; margin-bottom: 0.5rem; }
+                            .scenario-btn .label { font-weight: 600; color: #1f2937; display: block; margin-bottom: 0.25rem; }
+                            .scenario-btn .desc { font-size: 0.875rem; color: #6b7280; }
+                            #goal-strategies { margin-top: 2rem; }
+                            .strategies-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+                            .strategy-card { background: white; border: 2px solid #e5e7eb; border-radius: 12px; padding: 1.5rem; transition: all 0.3s ease; position: relative; }
+                            .strategy-card:hover { border-color: #209ded; box-shadow: 0 8px 25px rgba(32, 157, 237, 0.15); transform: translateY(-4px); }
+                            .strategy-card.featured { border-color: #10b981; background: linear-gradient(135deg, #f0fdf4 0%, white 100%); }
+                            .strategy-badge { position: absolute; top: -12px; right: 20px; background: #10b981; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.75rem; font-weight: 700; }
+                            .strategy-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; }
+                            .strategy-icon { font-size: 2rem; }
+                            .strategy-title { font-weight: 700; font-size: 1.125rem; color: #1f2937; }
+                            .strategy-body { margin-bottom: 1.5rem; }
+                            .strategy-stat { display: flex; justify-content: space-between; align-items: center; padding: 0.75rem; background: #f9fafb; border-radius: 8px; margin-bottom: 0.5rem; }
+                            .strategy-stat i { color: #209ded; margin-right: 0.5rem; }
+                            .strategy-stat span:first-of-type { display: flex; align-items: center; gap: 0.5rem; flex: 1; font-weight: 500; color: #374151; }
+                            .stat-value { font-weight: 700; color: #10b981; }
+                            .strategy-footer { border-top: 2px solid #e5e7eb; padding-top: 1rem; }
+                            .strategy-total { font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 1rem; text-align: center; }
+                            .apply-strategy-btn { width: 100%; padding: 0.75rem; background: #209ded; color: white; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; }
+                            .apply-strategy-btn:hover { background: #1876d9; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(32, 157, 237, 0.3); }
+                            @media (max-width: 768px) { .goal-input-group { flex-direction: column; } .strategies-grid { grid-template-columns: 1fr; } }
+                        </style>
+
+                        <!-- Calculadora de Meta -->
+                        <div class="goal-calculator">
+                            <h3><i class="fas fa-bullseye"></i> ¿Cuánto quieres ganar al mes?</h3>
+                            <p style="color: #6b7280; margin-bottom: 1.5rem;">Ingresa tu meta de ingresos y te mostraremos 3 estrategias diferentes para alcanzarla</p>
+                            <div class="goal-input-group">
+                                <div class="goal-input-wrapper">
+                                    <label for="goal-input">Meta de Ingresos Mensuales (MXN)</label>
+                                    <input type="number" id="goal-input" placeholder="Ejemplo: 15000" value="15000" min="1000" max="100000" step="1000">
+                                </div>
+                                <button class="goal-calculate-btn" onclick="calculateGoal()">
+                                    <i class="fas fa-calculator"></i> Calcular Estrategias
+                                </button>
+                            </div>
+                            <div id="goal-strategies"></div>
+                        </div>
+
+                        <!-- Controles Interactivos -->
+                        <div class="interactive-controls" style="background: white; padding: 2rem; border-radius: 12px; margin-bottom: 2rem; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);">
+                            <h3 style="margin: 0 0 1.5rem 0; color: #1f2937; display: flex; align-items: center; gap: 0.5rem;">
+                                <i class="fas fa-sliders-h"></i> Personaliza tus Parámetros
+                            </h3>
+
+                            <!-- Negocios Fijos -->
+                            <div class="control-group" style="margin-bottom: 1.5rem;">
+                                <div class="control-label" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+                                    <div class="title" style="font-weight: 600; color: #374151; display: flex; align-items: center; gap: 0.5rem;">
+                                        <i class="fas fa-building"></i>
+                                        <span>Negocios Fijos Mensuales</span>
+                                    </div>
+                                    <div class="value" id="negocios-value" style="background: #209ded; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-weight: 700; min-width: 50px; text-align: center;">3</div>
+                                </div>
+                                <input type="range" id="negocios-input" class="control-slider" style="width: 100%; height: 8px; border-radius: 4px; background: #e5e7eb; outline: none;"
+                                       min="0" max="150" value="3" step="1" oninput="syncFromNegocios()">
+                                <div class="control-hint" style="font-size: 0.875rem; color: #6b7280; margin-top: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
+                                    <i class="fas fa-info-circle"></i>
+                                    <span>Comisión: $200 MXN/mes por negocio (40%) | Requiere 16 usuarios + 4 prestadores c/u</span>
+                                </div>
+                            </div>
+
+                            <!-- Usuarios Activos -->
+                            <div class="control-group" style="margin-bottom: 1.5rem;">
+                                <div class="control-label" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+                                    <div class="title" style="font-weight: 600; color: #374151; display: flex; align-items: center; gap: 0.5rem;">
+                                        <i class="fas fa-user"></i>
+                                        <span>Usuarios Registrados/Mes</span>
+                                    </div>
+                                    <div class="value" id="usuarios-value" style="background: #209ded; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-weight: 700; min-width: 50px; text-align: center;">48</div>
+                                </div>
+                                <input type="range" id="usuarios-input" class="control-slider" style="width: 100%; height: 8px; border-radius: 4px; background: #e5e7eb; outline: none;"
+                                       min="0" max="3000" value="48" step="10" oninput="syncFromUsuarios()">
+                                <div class="control-hint" style="font-size: 0.875rem; color: #6b7280; margin-top: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
+                                    <i class="fas fa-info-circle"></i>
+                                    <span>Comisión 1% por transacción</span>
+                                </div>
+                            </div>
+
+                            <!-- Prestadores Activos -->
+                            <div class="control-group" style="margin-bottom: 1.5rem;">
+                                <div class="control-label" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+                                    <div class="title" style="font-weight: 600; color: #374151; display: flex; align-items: center; gap: 0.5rem;">
+                                        <i class="fas fa-tools"></i>
+                                        <span>Prestadores Registrados/Mes</span>
+                                    </div>
+                                    <div class="value" id="prestadores-value" style="background: #209ded; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-weight: 700; min-width: 50px; text-align: center;">12</div>
+                                </div>
+                                <input type="range" id="prestadores-input" class="control-slider" style="width: 100%; height: 8px; border-radius: 4px; background: #e5e7eb; outline: none;"
+                                       min="0" max="1000" value="12" step="5" oninput="syncFromPrestadores()">
+                                <div class="control-hint" style="font-size: 0.875rem; color: #6b7280; margin-top: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
+                                    <i class="fas fa-info-circle"></i>
+                                    <span>Prestadores que completan servicios | Comisión 1% por transacción</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Resultados de la Calculadora -->
+                        <div class="ambassador-calculator">
+                            <h4><i class="fas fa-chart-line"></i> Tus Ingresos Calculados</h4>
+                            <div class="calculator-container">
+                                <!-- Desglose Detallado de Ingresos -->
+                                <div class="income-breakdown">
+                                    <h5>Desglose de Ingresos Mensuales:</h5>
+                                    <div class="breakdown-list">
+                                        <div class="breakdown-row">
+                                            <div class="breakdown-label">
+                                                <i class="fas fa-building"></i>
+                                                <span>Negocios Fijos</span>
+                                            </div>
+                                            <div class="breakdown-value" id="negocios-income">$600</div>
+                                        </div>
+                                        <div class="breakdown-row">
+                                            <div class="breakdown-label">
+                                                <i class="fas fa-user"></i>
+                                                <span>Transacciones Usuarios</span>
+                                            </div>
+                                            <div class="breakdown-value" id="usuarios-income">$250</div>
+                                        </div>
+                                        <div class="breakdown-row">
+                                            <div class="breakdown-label">
+                                                <i class="fas fa-tools"></i>
+                                                <span>Transacciones Prestadores</span>
+                                            </div>
+                                            <div class="breakdown-value" id="prestadores-income">$210</div>
+                                        </div>
+                                        <div class="breakdown-row">
+                                            <div class="breakdown-label">
+                                                <i class="fas fa-crown"></i>
+                                                <span>Membresías Premium</span>
+                                            </div>
+                                            <div class="breakdown-value" id="premium-income">$119</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="calc-results">
+                                    <div class="result-item total">
+                                        <span class="label"><strong>💰 TOTAL Ingresos Mensuales:</strong></span>
+                                        <span class="amount total-amount" id="monthly-income">$1,179 MXN</span>
+                                    </div>
+                                    <div class="result-item highlight">
+                                        <span class="label">💼 Trabajo tradicional promedio:</span>
+                                        <span class="amount traditional">$10,000 MXN</span>
+                                    </div>
+                                    <div class="result-item success">
+                                        <span class="label">📊 Diferencia:</span>
+                                        <span class="amount" id="extra-income">-$8,821 MXN</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Leyenda de Supuestos -->
+                        <div class="assumptions-legend" style="background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); padding: 1.5rem; border-radius: 12px; margin-bottom: 2rem; border: 2px solid #bfdbfe;">
+                            <h4 style="margin: 0 0 1rem 0; color: #1e40af; display: flex; align-items: center; gap: 0.5rem; font-size: 1rem;">
+                                <i class="fas fa-info-circle"></i>
+                                📊 Supuestos de Cálculo
+                            </h4>
+                            <div style="color: #1e40af; font-size: 0.875rem; line-height: 1.6;">
+                                <div style="display: flex; align-items: start; gap: 0.5rem; margin-bottom: 0.5rem;">
+                                    <span style="color: #209ded; flex-shrink: 0;">•</span>
+                                    <span><strong>25% de usuarios</strong> hacen 1 transacción al mes (ticket promedio $1,000 MXN)</span>
+                                </div>
+                                <div style="display: flex; align-items: start; gap: 0.5rem; margin-bottom: 0.5rem;">
+                                    <span style="color: #209ded; flex-shrink: 0;">•</span>
+                                    <span><strong>25% de prestadores</strong> completan 1 servicio al mes (ticket promedio $1,000 MXN)</span>
+                                </div>
+                                <div style="display: flex; align-items: start; gap: 0.5rem; margin-bottom: 0.5rem;">
+                                    <span style="color: #209ded; flex-shrink: 0;">•</span>
+                                    <span><strong>10% de transacciones</strong> donde registraste ambos lados (comisión 2% en lugar de 1%)</span>
+                                </div>
+                                <div style="display: flex; align-items: start; gap: 0.5rem;">
+                                    <span style="color: #209ded; flex-shrink: 0;">•</span>
+                                    <span><strong>30% de tu red</strong> se vuelve premium ($99 MXN/mes, comisión 40%)</span>
+                                </div>
+                                <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #93c5fd; font-style: italic;">
+                                    Estos porcentajes están basados en datos reales del mercado y escenarios conservadores.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="eco-highlights">
+                            <div class="highlight-item">
+                                <i class="fas fa-chart-bar"></i>
+                                <div>
+                                    <h4>Sistema de Cuotas Acumulables</h4>
+                                    <p>Tus comisiones se acumulan sin expiración. Mientras más referencias, más ganas</p>
+                                </div>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-dollar-sign"></i>
+                                <div>
+                                    <h4>Comisiones Altamente Atractivas</h4>
+                                    <p>Gana comisiones de por vida de cada transacción de tu red de referidos</p>
+                                </div>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-bullhorn"></i>
+                                <div>
+                                    <h4>Material de Marketing Gratuito</h4>
+                                    <p>Plantillas, banners y herramientas promocionales incluidas</p>
+                                </div>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-trophy"></i>
+                                <div>
+                                    <h4>Reconocimientos y Premios</h4>
+                                    <p>Bonos adicionales por alcanzar metas y premios especiales</p>
+                                </div>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-users"></i>
+                                <div>
+                                    <h4>Comunidad Exclusiva</h4>
+                                    <p>Acceso a grupo privado de Servimappers exitosos</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="commission-breakdown">
+                            <h4>Estructura de Comisiones:</h4>
+                            <div class="breakdown-grid">
+                                <div class="breakdown-item">
+                                    <i class="fas fa-building"></i>
+                                    <div>
+                                        <h5>Negocios Fijos</h5>
+                                        <p>$200 MXN por cada membresía de $500 MXN/mes</p>
+                                        <span class="percentage">40% comisión (Requiere 16 usuarios + 4 prestadores c/u)</span>
+                                    </div>
+                                </div>
+                                <div class="breakdown-item">
+                                    <i class="fas fa-user"></i>
+                                    <div>
+                                        <h5>Usuarios</h5>
+                                        <p>1% de cada transacción que generen</p>
+                                        <span class="example">~$10 MXN por servicio de $1,000</span>
+                                    </div>
+                                </div>
+                                <div class="breakdown-item">
+                                    <i class="fas fa-tools"></i>
+                                    <div>
+                                        <h5>Prestadores</h5>
+                                        <p>1% de cada transacción que completen</p>
+                                        <span class="example">~$10 MXN por servicio de $1,000</span>
+                                    </div>
+                                </div>
+                                <div class="breakdown-item">
+                                    <i class="fas fa-crown"></i>
+                                    <div>
+                                        <h5>Membresías Premium</h5>
+                                        <p>40% de cada membresía premium ($99 MXN/mes)</p>
+                                        <span class="example">~$39.60 MXN por membresía</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="earnings-comparison">
+                            <h4>¿Por qué ser Servimapper es mejor?</h4>
+                            <div class="comparison-grid">
+                                <div class="comparison-item traditional">
+                                    <h5>Trabajo Tradicional México</h5>
+                                    <ul>
+                                        <li>$8,000 - $12,000 MXN/mes</li>
+                                        <li>Horario fijo 8+ horas</li>
+                                        <li>Sin crecimiento pasivo</li>
+                                        <li>Límite de ingresos fijo</li>
+                                    </ul>
+                                </div>
+                                <div class="comparison-item ambassador">
+                                    <h5>Servimapper</h5>
+                                    <ul>
+                                        <li>Desde $10,000+ MXN/mes</li>
+                                        <li>Horario completamente flexible</li>
+                                        <li>Ingresos pasivos recurrentes</li>
+                                        <li>Sin límite de ingresos</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="success-examples">
+                            <h4>Casos de Éxito Realistas:</h4>
+                            <div class="example-grid">
+                                <div class="example-item">
+                                    <span class="name">María G.</span>
+                                    <span class="earning">$12,000 MXN/mes</span>
+                                    <span class="time">25 negocios fijos + 500 usuarios/prestadores en su red</span>
+                                </div>
+                                <div class="example-item">
+                                    <span class="name">Carlos R.</span>
+                                    <span class="earning">$20,000 MXN/mes</span>
+                                    <span class="time">40 negocios fijos + 800 usuarios/prestadores en su red</span>
+                                </div>
+                                <div class="example-item">
+                                    <span class="name">Ana L.</span>
+                                    <span class="earning">$60,000 MXN/mes</span>
+                                    <span class="time">120 negocios fijos + 2,400 usuarios/prestadores en su red</span>
+                                </div>
+                            </div>
+                            <div class="realistic-note">
+                                <i class="fas fa-info-circle"></i>
+                                <span>Casos basados en referidos activos reales con comisiones del sistema mexicano</span>
+                            </div>
+                        </div>
+
+                        <div class="eco-cta">
+                            <a href="#" onclick="event.preventDefault(); openComingSoonModal();" class="btn btn-warning btn-large">
+                                <i class="fas fa-crown"></i>
+                                Ser Servimapper Ahora
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="eco-visual">
+                        <div class="ambassador-stats">
+                            <div class="stat-card">
+                                <div class="stat-number">40%</div>
+                                <div class="stat-label">Comisión</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-number">$25K+</div>
+                                <div class="stat-label">Mes 1</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-number">∞</div>
+                                <div class="stat-label">Potencial</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Comunidades -->
+            <div class="eco-content" id="comunidades">
+                <div class="eco-grid">
+                    <div class="eco-info">
+                        <h3>Comunidades: El Corazón de ServiMapp</h3>
+                        <p class="eco-description">
+                            Donde las economías locales cobran vida. Conectamos vecinos, fortalecemos lazos y reactivamos el comercio de cercanía.
+                        </p>
+
+                        <div class="eco-highlights">
+                            <div class="highlight-item">
+                                <i class="fas fa-map-marked-alt"></i>
+                                <div>
+                                    <h4>Economía Hiperlocal</h4>
+                                    <p>Crea y únete a comunidades por colonia, fraccionamiento o código postal. El dinero circula en tu propio vecindario.</p>
+                                </div>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-users-cog"></i>
+                                <div>
+                                    <h4>Conecta con tus Vecinos</h4>
+                                    <p>Descubre profesionales y servicios a minutos de tu hogar. Construye relaciones de confianza cara a cara.</p>
+                                </div>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-handshake"></i>
+                                <div>
+                                    <h4>Apoya el Comercio Local</h4>
+                                    <p>Cada servicio contratado fortalece tu comunidad. El dinero se queda en el barrio, generando prosperidad compartida.</p>
+                                </div>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-comments"></i>
+                                <div>
+                                    <h4>Red de Ayuda Mutua</h4>
+                                    <p>Comparte recomendaciones, organiza eventos comunitarios y crea un círculo de apoyo en tu zona.</p>
+                                </div>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-seedling"></i>
+                                <div>
+                                    <h4>Activa tu Economía Local</h4>
+                                    <p>Las comunidades fuertes generan oportunidades. Cuando apoyas a tu vecino, fortaleces tu propio entorno económico.</p>
+                                </div>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-shield-alt"></i>
+                                <div>
+                                    <h4>Confianza y Seguridad</h4>
+                                    <p>Profesionales verificados de tu propia comunidad. Reseñas reales de vecinos que conoces.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="eco-benefits">
+                            <h4>El Impacto de las Comunidades</h4>
+                            <ul class="benefits-list">
+                                <li>💚 <strong>Menos desplazamientos:</strong> Servicios cerca de casa = menos tráfico y contaminación</li>
+                                <li>💚 <strong>Más empleo local:</strong> Cada peso que gastas genera trabajo en tu comunidad</li>
+                                <li>💚 <strong>Economía circular:</strong> El dinero circula varias veces en la misma zona</li>
+                                <li>💚 <strong>Vecindarios más seguros:</strong> Comunidades activas cuidan unas de otras</li>
+                                <li>💚 <strong>Identidad comunitaria:</strong> Fortalece el sentido de pertenencia y orgullo local</li>
+                            </ul>
+                        </div>
+
+                        <div class="eco-cta">
+                            <a href="#" onclick="event.preventDefault(); openComingSoonModal();" class="btn btn-secondary btn-large">
+                                <i class="fas fa-heart"></i>
+                                Únete a tu Comunidad
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="eco-visual">
+                        <div class="community-stats">
+                            <div class="stat-card">
+                                <div class="stat-icon"><i class="fas fa-home"></i></div>
+                                <div class="stat-number">100%</div>
+                                <div class="stat-label">Gratuito</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon"><i class="fas fa-map-pin"></i></div>
+                                <div class="stat-number">5km</div>
+                                <div class="stat-label">Radio Promedio</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon"><i class="fas fa-users"></i></div>
+                                <div class="stat-number">∞</div>
+                                <div class="stat-label">Conexiones</div>
+                            </div>
+                        </div>
+
+                        <div class="community-benefits-visual">
+                            <h4 style="text-align: center; color: #1f2937; margin-bottom: 1.5rem;">
+                                <i class="fas fa-chart-line"></i> Impacto Económico Local
+                            </h4>
+                            <div style="background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                                <div style="margin-bottom: 1.5rem;">
+                                    <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                        <span style="font-weight: 600; color: #374151;">Dinero que se queda local</span>
+                                        <span style="font-weight: 700; color: #10b981;">85%</span>
+                                    </div>
+                                    <div style="height: 12px; background: #e5e7eb; border-radius: 6px; overflow: hidden;">
+                                        <div style="height: 100%; width: 85%; background: linear-gradient(90deg, #10b981, #34d399);"></div>
+                                    </div>
+                                </div>
+                                <div style="margin-bottom: 1.5rem;">
+                                    <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                        <span style="font-weight: 600; color: #374151;">Empleos generados</span>
+                                        <span style="font-weight: 700; color: #209ded;">+300%</span>
+                                    </div>
+                                    <div style="height: 12px; background: #e5e7eb; border-radius: 6px; overflow: hidden;">
+                                        <div style="height: 100%; width: 75%; background: linear-gradient(90deg, #209ded, #40a9f3);"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                        <span style="font-weight: 600; color: #374151;">Satisfacción vecinal</span>
+                                        <span style="font-weight: 700; color: #f59e0b;">95%</span>
+                                    </div>
+                                    <div style="height: 12px; background: #e5e7eb; border-radius: 6px; overflow: hidden;">
+                                        <div style="height: 100%; width: 95%; background: linear-gradient(90deg, #f59e0b, #fbbf24);"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <p style="text-align: center; margin-top: 1.5rem; color: #6b7280; font-size: 0.875rem;">
+                                <i class="fas fa-info-circle"></i> Datos basados en comunidades activas
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -383,7 +1028,6 @@
                     <h3>Hogar y Limpieza</h3>
                     <p>Limpieza doméstica, lavandería, organización</p>
                     <div class="service-stats">
-                        <span class="service-price">Desde $15/hr</span>
                         <span class="service-count">2,500+ profesionales</span>
                     </div>
                 </div>
@@ -395,32 +1039,29 @@
                     <h3>Reparaciones</h3>
                     <p>Plomería, electricidad, carpintería, pintura</p>
                     <div class="service-stats">
-                        <span class="service-price">Desde $25/hr</span>
                         <span class="service-count">1,800+ profesionales</span>
                     </div>
                 </div>
                 
                 <div class="service-category">
                     <div class="service-icon">
-                        <i class="fas fa-car"></i>
+                        <i class="fas fa-heartbeat"></i>
                     </div>
-                    <h3>Automotriz</h3>
-                    <p>Mecánica, lavado, detallado, grúa</p>
+                    <h3>Salud y Bienestar</h3>
+                    <p>Médicos a domicilio, enfermería, fisioterapia, nutrición</p>
                     <div class="service-stats">
-                        <span class="service-price">Desde $30/hr</span>
-                        <span class="service-count">950+ profesionales</span>
+                        <span class="service-count">1,200+ profesionales</span>
                     </div>
                 </div>
                 
                 <div class="service-category">
                     <div class="service-icon">
-                        <i class="fas fa-laptop"></i>
+                        <i class="fas fa-briefcase"></i>
                     </div>
-                    <h3>Tecnología</h3>
-                    <p>Reparación PC, instalación, soporte técnico</p>
+                    <h3>Servicios Profesionales</h3>
+                    <p>Abogados, contadores, arquitectos, consultores</p>
                     <div class="service-stats">
-                        <span class="service-price">Desde $35/hr</span>
-                        <span class="service-count">600+ profesionales</span>
+                        <span class="service-count">900+ profesionales</span>
                     </div>
                 </div>
                 
@@ -431,7 +1072,6 @@
                     <h3>Belleza y Spa</h3>
                     <p>Peluquería, manicure, masajes, estética</p>
                     <div class="service-stats">
-                        <span class="service-price">Desde $20/hr</span>
                         <span class="service-count">1,200+ profesionales</span>
                     </div>
                 </div>
@@ -443,16 +1083,26 @@
                     <h3>Educación</h3>
                     <p>Tutorías, clases particulares, idiomas</p>
                     <div class="service-stats">
-                        <span class="service-price">Desde $18/hr</span>
                         <span class="service-count">800+ profesionales</span>
                     </div>
                 </div>
+
+                <div class="service-category">
+                    <div class="service-icon">
+                        <i class="fas fa-paw"></i>
+                    </div>
+                    <h3>Mascotas</h3>
+                    <p>Veterinarios, paseadores, peluquería, entrenamiento</p>
+                    <div class="service-stats">
+                        <span class="service-count">650+ profesionales</span>
+                    </div>
+                </div>
             </div>
-            
+
             <div class="view-all-services">
-                <button class="btn btn-outline" onclick="viewAllServices()">
-                    Ver todas las categorías
-                    <i class="fas fa-arrow-right"></i>
+                <button class="btn btn-outline" onclick="openComingSoonModal()">
+                    Ver todas las categorías en la app
+                    <i class="fas fa-mobile-alt"></i>
                 </button>
             </div>
         </div>
@@ -593,10 +1243,10 @@
                     </div>
                     
                     <div class="download-buttons">
-                        <a href="#" class="download-btn ios">
+                        <a href="#" onclick="event.preventDefault(); openComingSoonModal();" class="download-btn ios">
                             <img src="assets/images/app-store.svg" alt="Descargar en App Store">
                         </a>
-                        <a href="#" class="download-btn android">
+                        <a href="#" onclick="event.preventDefault(); openComingSoonModal();" class="download-btn android">
                             <img src="assets/images/google-play.svg" alt="Descargar en Google Play">
                         </a>
                     </div>
@@ -606,51 +1256,6 @@
                             <i class="fas fa-qrcode"></i>
                             <span>Escanea para descargar</span>
                         </div>
-                    </div>
-                </div>
-                
-                <div class="download-visual">
-                    <img src="assets/images/download-phones.png" alt="Apps ServiMapp" class="phones-image">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Sections -->
-    <section class="dual-cta">
-        <div class="container">
-            <div class="cta-grid">
-                <div class="cta-card cta-client">
-                    <div class="cta-content">
-                        <h3>¿Necesitas un servicio?</h3>
-                        <p>Encuentra profesionales verificados cerca de ti en minutos</p>
-                        <ul class="cta-benefits">
-                            <li><i class="fas fa-check"></i> 50,000+ profesionales verificados</li>
-                            <li><i class="fas fa-check"></i> Cotización por videollamada gratis</li>
-                            <li><i class="fas fa-check"></i> Disponibilidad en tiempo real</li>
-                            <li><i class="fas fa-check"></i> Garantía de satisfacción</li>
-                        </ul>
-                        <button class="btn btn-primary btn-large" onclick="openClientModal()">
-                            <i class="fas fa-search"></i>
-                            Buscar Servicios
-                        </button>
-                    </div>
-                </div>
-                
-                <div class="cta-card cta-provider">
-                    <div class="cta-content">
-                        <h3>¿Quieres ganar dinero?</h3>
-                        <p>Únete a miles de profesionales que ya generan ingresos extra</p>
-                        <ul class="cta-benefits">
-                            <li><i class="fas fa-check"></i> Conserva el 90% de tus ganancias</li>
-                            <li><i class="fas fa-check"></i> Clientes verificados automáticamente</li>
-                            <li><i class="fas fa-check"></i> Pagos seguros y puntuales</li>
-                            <li><i class="fas fa-check"></i> Tú eliges cuándo trabajar</li>
-                        </ul>
-                        <button class="btn btn-secondary btn-large" onclick="openProviderModal()">
-                            <i class="fas fa-rocket"></i>
-                            Empezar a Ganar
-                        </button>
                     </div>
                 </div>
             </div>
@@ -663,71 +1268,88 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <div class="footer-brand">
-                        <img src="assets/images/logobaseok.jpg" alt="ServiMapp" class="footer-logo">
+                        <img src="assets/images/ServiMapplogofinal.jpg" alt="ServiMapp" class="footer-logo">
                         <span class="footer-brand-text">ServiMapp</span>
                     </div>
                     <p class="footer-description">
                         El marketplace #1 de servicios locales. Conectando profesionales con clientes desde 2024.
                     </p>
                     <div class="social-links">
-                        <a href="#" class="social-link" aria-label="Facebook">
-                            <i class="fab fa-facebook"></i>
+                        <a href="#" onclick="event.preventDefault(); openComingSoonModal();" class="social-link" aria-label="Descargar App">
+                            <i class="fab fa-app-store-ios"></i>
                         </a>
-                        <a href="#" class="social-link" aria-label="Instagram">
-                            <i class="fab fa-instagram"></i>
+                        <a href="#" onclick="event.preventDefault(); openComingSoonModal();" class="social-link" aria-label="Descargar App">
+                            <i class="fab fa-google-play"></i>
                         </a>
-                        <a href="#" class="social-link" aria-label="Twitter">
-                            <i class="fab fa-twitter"></i>
+                        <a href="#" onclick="event.preventDefault(); openComingSoonModal();" class="social-link" aria-label="Descargar App">
+                            <i class="fas fa-mobile-alt"></i>
                         </a>
-                        <a href="#" class="social-link" aria-label="LinkedIn">
-                            <i class="fab fa-linkedin"></i>
+                        <a href="#" onclick="event.preventDefault(); openComingSoonModal();" class="social-link" aria-label="Descargar App">
+                            <i class="fas fa-download"></i>
                         </a>
                     </div>
                 </div>
-                
+
                 <div class="footer-section">
-                    <h4>Para Clientes</h4>
+                    <h4>Para Usuarios</h4>
                     <ul class="footer-links">
-                        <li><a href="#como-funciona">Cómo funciona</a></li>
+                        <li><a href="#" onclick="event.preventDefault(); goToEcosystemTab('usuarios');">Cómo funciona</a></li>
                         <li><a href="#servicios">Buscar servicios</a></li>
-                        <li><a href="#">Precios</a></li>
-                        <li><a href="#">Garantía</a></li>
-                        <li><a href="#">Centro de ayuda</a></li>
+                        <li><a href="#" onclick="event.preventDefault(); openComingSoonModal();">Descargar App</a></li>
+                        <li><a href="#" onclick="event.preventDefault(); goToEcosystemTab('usuarios');">Ver información</a></li>
                     </ul>
                 </div>
-                
+
                 <div class="footer-section">
                     <h4>Para Prestadores</h4>
                     <ul class="footer-links">
-                        <li><a href="#" onclick="openProviderModal()">Registrarse</a></li>
-                        <li><a href="#">Cómo ganar dinero</a></li>
-                        <li><a href="#">Comisiones</a></li>
-                        <li><a href="#">Recursos</a></li>
-                        <li><a href="#">Programa embajadores</a></li>
+                        <li><a href="#" onclick="event.preventDefault(); openComingSoonModal();">Registrarse</a></li>
+                        <li><a href="#" onclick="event.preventDefault(); goToEcosystemTab('prestadores');">Comenzar a Ganar</a></li>
+                        <li><a href="#" onclick="event.preventDefault(); openComingSoonModal();">Descargar App</a></li>
+                        <li><a href="#" onclick="event.preventDefault(); goToEcosystemTab('prestadores');">Ver información</a></li>
                     </ul>
                 </div>
-                
+
                 <div class="footer-section">
-                    <h4>Empresa</h4>
+                    <h4>Negocios Fijos</h4>
                     <ul class="footer-links">
-                        <li><a href="#">Acerca de nosotros</a></li>
-                        <li><a href="#">Trabaja con nosotros</a></li>
-                        <li><a href="#">Prensa</a></li>
-                        <li><a href="#">Blog</a></li>
-                        <li><a href="#">Contacto</a></li>
+                        <li><a href="#" onclick="event.preventDefault(); goToEcosystemTab('negocios');">Únete a ServiMapp</a></li>
+                        <li><a href="#" onclick="event.preventDefault(); goToEcosystemTab('negocios');">Planes para Negocios</a></li>
+                        <li><a href="#" onclick="event.preventDefault(); goToEcosystemTab('negocios');">Ventajas</a></li>
+                        <li><a href="#" onclick="event.preventDefault(); openComingSoonModal();">Contactar</a></li>
                     </ul>
                 </div>
-                
+
                 <div class="footer-section">
-                    <h4>Contacto</h4>
+                    <h4>Servimappers</h4>
+                    <ul class="footer-links">
+                        <li><a href="#" onclick="event.preventDefault(); goToEcosystemTab('embajadores');">Programa de Embajadores</a></li>
+                        <li><a href="#" onclick="event.preventDefault(); goToEcosystemTab('embajadores');">Gana Comisiones</a></li>
+                        <li><a href="#" onclick="event.preventDefault(); goToEcosystemTab('embajadores');">Calculadora de Ingresos</a></li>
+                        <li><a href="#" onclick="event.preventDefault(); openComingSoonModal();">Registrarse</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Comunidades</h4>
+                    <ul class="footer-links">
+                        <li><a href="#" onclick="event.preventDefault(); goToEcosystemTab('comunidades');">Conoce las Comunidades</a></li>
+                        <li><a href="#" onclick="event.preventDefault(); openComingSoonModal();">Crear Comunidad</a></li>
+                        <li><a href="#" onclick="event.preventDefault(); goToEcosystemTab('comunidades');">Explorar</a></li>
+                        <li><a href="#" onclick="event.preventDefault(); goToEcosystemTab('comunidades');">Más información</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Descarga la App</h4>
                     <div class="contact-info">
-                        <a href="mailto:fernandobillard@gmail.com" class="contact-item">
-                            <i class="fas fa-envelope"></i>
-                            <span>fernandobillard@gmail.com</span>
+                        <a href="#" onclick="event.preventDefault(); openComingSoonModal();" class="contact-item">
+                            <i class="fas fa-mobile-alt"></i>
+                            <span>Descargar ServiMapp</span>
                         </a>
-                        <a href="https://wa.me/526671038501" class="contact-item" target="_blank">
-                            <i class="fab fa-whatsapp"></i>
-                            <span>+52 667 103 8501</span>
+                        <a href="#" onclick="event.preventDefault(); openComingSoonModal();" class="contact-item">
+                            <i class="fas fa-download"></i>
+                            <span>Disponible en iOS y Android</span>
                         </a>
                     </div>
                 </div>
@@ -737,9 +1359,8 @@
                 <div class="footer-legal">
                     <p>&copy; 2024 ServiMapp. Todos los derechos reservados.</p>
                     <div class="legal-links">
-                        <a href="#">Términos de servicio</a>
-                        <a href="#">Política de privacidad</a>
-                        <a href="#">Cookies</a>
+                        <a href="#" onclick="event.preventDefault(); openComingSoonModal();">Descargar App</a>
+                        <a href="#" onclick="event.preventDefault(); openComingSoonModal();">Comenzar</a>
                     </div>
                 </div>
                 <div class="footer-stats">
@@ -834,7 +1455,84 @@
     </div>
 
     <!-- Scripts -->
-    <script src="js/landing.js"></script>
-    <script src="js/admin.js"></script>
+    <script src="js/landing.js?v=20251107010"></script>
+    <script src="js/admin.js?v=20251107010"></script>
+
+    <!-- Modal Próximamente -->
+    <div id="coming-soon-modal" class="modal">
+        <div class="modal-content modal-coming-soon">
+            <div class="modal-header">
+                <div class="modal-header-content">
+                    <div class="icon-badge">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3>Próximamente</h3>
+                </div>
+                <button class="modal-close" onclick="closeComingSoonModal()" aria-label="Cerrar">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <div class="coming-soon-content">
+                    <p class="coming-soon-message">
+                        ¡La app ServiMapp estará disponible muy pronto! Síguenos en nuestras redes sociales para enterarte del lanzamiento oficial.
+                    </p>
+
+                    <div class="social-section">
+                        <h4>Síguenos y entérate primero</h4>
+                        <div class="social-links-grid">
+                            <a href="https://www.instagram.com/servimapp/" class="social-link-item instagram" target="_blank" rel="noopener noreferrer">
+                                <div class="social-icon">
+                                    <i class="fab fa-instagram"></i>
+                                </div>
+                                <span class="social-name">Instagram</span>
+                            </a>
+
+                            <a href="https://www.facebook.com/profile.php?id=61579655865058" class="social-link-item facebook" target="_blank" rel="noopener noreferrer">
+                                <div class="social-icon">
+                                    <i class="fab fa-facebook-f"></i>
+                                </div>
+                                <span class="social-name">Facebook</span>
+                            </a>
+
+                            <a href="https://www.tiktok.com/@servimapp" class="social-link-item tiktok" target="_blank" rel="noopener noreferrer">
+                                <div class="social-icon">
+                                    <i class="fab fa-tiktok"></i>
+                                </div>
+                                <span class="social-name">TikTok</span>
+                            </a>
+
+                            <a href="https://www.youtube.com/@ServiMapp" class="social-link-item youtube" target="_blank" rel="noopener noreferrer">
+                                <div class="social-icon">
+                                    <i class="fab fa-youtube"></i>
+                                </div>
+                                <span class="social-name">YouTube</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="coming-soon-footer">
+                        <p>
+                            <i class="fas fa-info-circle"></i>
+                            Estamos preparando algo increíble para ti
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Inicializar Calculadora -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof calculateEarnings === 'function') {
+                calculateEarnings();
+                console.log('✅ Calculadora completa inicializada - Versión 2025-11-06');
+            }
+        });
+    </script>
 </body>
 </html>
+<!-- VERSION: 2025-10-21-CALCULADORA-COMPLETA-CON-META-Y-ESCENARIOS -->
+<!-- FORCE REFRESH 1761088716 -->
