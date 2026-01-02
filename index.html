@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ServiMapp - El marketplace #1 de servicios locales con geolocalización. Encuentra profesionales verificados cerca de ti o gana dinero ofreciendo tus servicios.">
+    <meta name="keywords" content="servicios locales, profesionales, marketplace, geolocalización, ServiMapp, trabajos, prestadores">
+    <meta name="author" content="ServiMapp">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://servi-map.com/">
+    <meta property="og:title" content="ServiMapp - El Marketplace #1 de Servicios Locales">
+    <meta property="og:description" content="Encuentra profesionales verificados cerca de ti o gana dinero ofreciendo tus servicios. 200+ categorías disponibles.">
+    <meta property="og:image" content="assets/images/og-image.jpg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://servi-map.com/">
+    <meta property="twitter:title" content="ServiMapp - El Marketplace #1 de Servicios Locales">
+    <meta property="twitter:description" content="Encuentra profesionales verificados cerca de ti o gana dinero ofreciendo tus servicios. 200+ categorías disponibles.">
+    <meta property="twitter:image" content="assets/images/og-image.jpg">
+    
+    <!-- Schema.org markup for Google -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "ServiMapp",
+        "description": "Marketplace de servicios locales con geolocalización",
+        "url": "https://servi-map.com",
+        "telephone": "+52-667-103-8501",
+        "email": "fernandobillard@gmail.com",
+        "sameAs": [
+            "https://www.facebook.com/servimap",
+            "https://www.instagram.com/servimap",
+            "https://www.twitter.com/servimap"
+        ],
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.8",
+            "reviewCount": "1250"
+        }
+    }
+    </script>
+    
+    <title>ServiMapp - El Marketplace #1 de Servicios Locales</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/icon-192x192.png">
+    <link rel="apple-touch-icon" href="assets/icons/icon-192x192.png">
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="css/landing.css" as="style">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" as="style">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/landing.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Firebase (lazy loaded) -->
+    <script defer src="/__/firebase/11.8.1/firebase-app-compat.js"></script>
+    <script defer src="/__/firebase/11.8.1/firebase-auth-compat.js"></script>
+    <script defer src="/__/firebase/11.8.1/firebase-firestore-compat.js"></script>
+    <script defer src="/__/firebase/init.js"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <img src="assets/images/logobaseok.jpg" alt="ServiMapp" class="nav-logo">
+                <span class="nav-brand-text">ServiMapp</span>
+            </div>
+            
+            <div class="nav-menu" id="nav-menu">
+                <a href="#inicio" class="nav-link active">Inicio</a>
+                <a href="#como-funciona" class="nav-link">Cómo funciona</a>
+                <a href="#servicios" class="nav-link">Servicios</a>
+                <a href="#testimonios" class="nav-link">Testimonios</a>
+                <a href="#descargar" class="nav-link">App</a>
+                <div class="nav-buttons">
+                    <button class="btn btn-secondary" onclick="openProviderModal()">Soy Prestador</button>
+                    <button class="btn btn-primary" onclick="openClientModal()">Buscar Servicios</button>
+                </div>
+            </div>
+            
+            <button class="nav-toggle" id="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="inicio">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <i class="fas fa-star"></i>
+                    <span>#1 en Servicios Locales</span>
+                </div>
+                <h1 class="hero-title">
+                    Encuentra el <span class="hero-highlight">profesional perfecto</span> cerca de ti
+                </h1>
+                <p class="hero-description">
+                    200+ categorías de servicios, profesionales verificados, geolocalización en tiempo real y videollamadas para cotizaciones. Todo en una sola plataforma.
+                </p>
+                
+                <!-- Search Bar -->
+                <div class="hero-search">
+                    <div class="search-container">
+                        <div class="search-input">
+                            <i class="fas fa-search search-icon"></i>
+                            <input type="text" placeholder="¿Qué servicio necesitas?" id="service-search">
+                        </div>
+                        <div class="location-input">
+                            <i class="fas fa-map-marker-alt location-icon"></i>
+                            <input type="text" placeholder="Tu ubicación" id="location-search">
+                            <button class="location-btn" onclick="getCurrentLocation()">
+                                <i class="fas fa-crosshairs"></i>
+                            </button>
+                        </div>
+                        <button class="search-btn" onclick="performSearch()">
+                            <i class="fas fa-search"></i>
+                            <span>Buscar</span>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Quick Categories -->
+                <div class="quick-categories">
+                    <span class="categories-label">Populares:</span>
+                    <button class="category-chip" onclick="searchCategory('limpieza')">
+                        <i class="fas fa-broom"></i> Limpieza
+                    </button>
+                    <button class="category-chip" onclick="searchCategory('plomeria')">
+                        <i class="fas fa-wrench"></i> Plomería
+                    </button>
+                    <button class="category-chip" onclick="searchCategory('electricidad')">
+                        <i class="fas fa-bolt"></i> Electricidad
+                    </button>
+                    <button class="category-chip" onclick="searchCategory('jardineria')">
+                        <i class="fas fa-leaf"></i> Jardinería
+                    </button>
+                </div>
+                
+                <!-- Trust Indicators -->
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">50K+</div>
+                        <div class="stat-label">Profesionales</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">500K+</div>
+                        <div class="stat-label">Servicios</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">4.8★</div>
+                        <div class="stat-label">Calificación</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">24/7</div>
+                        <div class="stat-label">Emergencias</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="hero-visual">
+                <div class="hero-phone">
+                    <img src="assets/images/app-preview.png" alt="App ServiMapp" class="phone-screen">
+                    <div class="floating-cards">
+                        <div class="floating-card card-1">
+                            <div class="card-avatar">
+                                <img src="assets/images/avatar-1.png" alt="Profesional">
+                            </div>
+                            <div class="card-info">
+                                <div class="card-name">María González</div>
+                                <div class="card-service">Limpieza doméstica</div>
+                                <div class="card-rating">
+                                    <i class="fas fa-star"></i> 4.9 • $25/hr
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="floating-card card-2">
+                            <div class="card-content">
+                                <i class="fas fa-video card-icon"></i>
+                                <span>Videollamada disponible</span>
+                            </div>
+                        </div>
+                        
+                        <div class="floating-card card-3">
+                            <div class="card-content">
+                                <i class="fas fa-shield-alt card-icon"></i>
+                                <span>100% Verificado</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Value Propositions -->
+    <section class="value-props">
+        <div class="container">
+            <div class="section-header">
+                <h2>¿Por qué elegir ServiMapp?</h2>
+                <p>La plataforma más completa para servicios locales</p>
+            </div>
+            
+            <div class="value-grid">
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-search-location"></i>
+                    </div>
+                    <h3>Geolocalización Real</h3>
+                    <p>Encuentra profesionales disponibles cerca de ti en tiempo real con precisión GPS.</p>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <h3>Videollamadas HD</h3>
+                    <p>Cotiza por videollamada antes de contratar. Ve el trabajo, habla directo con el profesional.</p>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>IA Inteligente</h3>
+                    <p>Nuestra IA encuentra el profesional perfecto para tu necesidad específica automáticamente.</p>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-shield-check"></i>
+                    </div>
+                    <h3>100% Verificados</h3>
+                    <p>Todos los profesionales pasan verificación de identidad y background check.</p>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>Disponibilidad 24/7</h3>
+                    <p>Servicios de emergencia disponibles las 24 horas, los 7 días de la semana.</p>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-hand-holding-dollar"></i>
+                    </div>
+                    <h3>Precios Justos</h3>
+                    <p>Los profesionales conservan el 90% de sus ganancias. Sin comisiones abusivas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works" id="como-funciona">
+        <div class="container">
+            <div class="section-header">
+                <h2>Cómo funciona ServiMapp</h2>
+                <p>Simple, rápido y seguro</p>
+            </div>
+            
+            <div class="how-tabs">
+                <button class="tab-btn active" onclick="showTab('client')">Para Clientes</button>
+                <button class="tab-btn" onclick="showTab('provider')">Para Prestadores</button>
+            </div>
+            
+            <div class="tab-content active" id="tab-client">
+                <div class="steps-grid">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3>Busca y Encuentra</h3>
+                            <p>Describe tu necesidad y encuentra profesionales verificados cerca de ti con disponibilidad en tiempo real.</p>
+                        </div>
+                        <div class="step-visual">
+                            <i class="fas fa-search"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3>Cotiza por Video</h3>
+                            <p>Habla directo con el profesional por videollamada HD. Ve su trabajo anterior y negocia el precio.</p>
+                        </div>
+                        <div class="step-visual">
+                            <i class="fas fa-video"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h3>Contrata y Paga</h3>
+                            <p>Confirma el servicio, paga de forma segura y recibe actualizaciones en tiempo real del progreso.</p>
+                        </div>
+                        <div class="step-visual">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tab-content" id="tab-provider">
+                <div class="steps-grid">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3>Regístrate Gratis</h3>
+                            <p>Crea tu perfil profesional, verifica tu identidad y agrega tus servicios y tarifas.</p>
+                        </div>
+                        <div class="step-visual">
+                            <i class="fas fa-user-plus"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3>Recibe Solicitudes</h3>
+                            <p>Clientes cercanos te contactarán automáticamente. Responde y cotiza por videollamada.</p>
+                        </div>
+                        <div class="step-visual">
+                            <i class="fas fa-bell"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h3>Trabaja y Cobra</h3>
+                            <p>Realiza el servicio, recibe pago automático y conserva el 90% de tus ganancias.</p>
+                        </div>
+                        <div class="step-visual">
+                            <i class="fas fa-dollar-sign"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="provider-cta">
+                    <h3>¿Listo para ganar dinero con tus habilidades?</h3>
+                    <button class="btn btn-primary btn-large" onclick="openProviderSignup()">
+                        <i class="fas fa-rocket"></i>
+                        Empezar a Ganar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Services -->
+    <section class="featured-services" id="servicios">
+        <div class="container">
+            <div class="section-header">
+                <h2>Servicios Más Solicitados</h2>
+                <p>Más de 200 categorías disponibles</p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-category">
+                    <div class="service-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <h3>Hogar y Limpieza</h3>
+                    <p>Limpieza doméstica, lavandería, organización</p>
+                    <div class="service-stats">
+                        <span class="service-price">Desde $15/hr</span>
+                        <span class="service-count">2,500+ profesionales</span>
+                    </div>
+                </div>
+                
+                <div class="service-category">
+                    <div class="service-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3>Reparaciones</h3>
+                    <p>Plomería, electricidad, carpintería, pintura</p>
+                    <div class="service-stats">
+                        <span class="service-price">Desde $25/hr</span>
+                        <span class="service-count">1,800+ profesionales</span>
+                    </div>
+                </div>
+                
+                <div class="service-category">
+                    <div class="service-icon">
+                        <i class="fas fa-car"></i>
+                    </div>
+                    <h3>Automotriz</h3>
+                    <p>Mecánica, lavado, detallado, grúa</p>
+                    <div class="service-stats">
+                        <span class="service-price">Desde $30/hr</span>
+                        <span class="service-count">950+ profesionales</span>
+                    </div>
+                </div>
+                
+                <div class="service-category">
+                    <div class="service-icon">
+                        <i class="fas fa-laptop"></i>
+                    </div>
+                    <h3>Tecnología</h3>
+                    <p>Reparación PC, instalación, soporte técnico</p>
+                    <div class="service-stats">
+                        <span class="service-price">Desde $35/hr</span>
+                        <span class="service-count">600+ profesionales</span>
+                    </div>
+                </div>
+                
+                <div class="service-category">
+                    <div class="service-icon">
+                        <i class="fas fa-cut"></i>
+                    </div>
+                    <h3>Belleza y Spa</h3>
+                    <p>Peluquería, manicure, masajes, estética</p>
+                    <div class="service-stats">
+                        <span class="service-price">Desde $20/hr</span>
+                        <span class="service-count">1,200+ profesionales</span>
+                    </div>
+                </div>
+                
+                <div class="service-category">
+                    <div class="service-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Educación</h3>
+                    <p>Tutorías, clases particulares, idiomas</p>
+                    <div class="service-stats">
+                        <span class="service-price">Desde $18/hr</span>
+                        <span class="service-count">800+ profesionales</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="view-all-services">
+                <button class="btn btn-outline" onclick="viewAllServices()">
+                    Ver todas las categorías
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials" id="testimonios">
+        <div class="container">
+            <div class="section-header">
+                <h2>Lo que dicen nuestros usuarios</h2>
+                <p>Más de 50,000 reseñas positivas</p>
+            </div>
+            
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">
+                        "Increíble plataforma. Encontré un plomero en 5 minutos y pude cotizar por videollamada antes de contratarlo. El servicio fue excelente."
+                    </p>
+                    <div class="testimonial-author">
+                        <img src="assets/images/avatar-1.png" alt="Ana Martínez">
+                        <div class="author-info">
+                            <div class="author-name">Ana Martínez</div>
+                            <div class="author-location">Ciudad de México</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">
+                        "Como prestador, ServiMapp me cambió la vida. Gano 3 veces más que en otras plataformas porque me quedo con el 90% de mis ingresos."
+                    </p>
+                    <div class="testimonial-author">
+                        <img src="assets/images/avatar-2.png" alt="Carlos Ruiz">
+                        <div class="author-info">
+                            <div class="author-name">Carlos Ruiz</div>
+                            <div class="author-location">Electricista • Guadalajara</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">
+                        "El sistema de geolocalización es perfecto. Siempre encuentro profesionales cerca de casa y la calidad es consistente."
+                    </p>
+                    <div class="testimonial-author">
+                        <img src="assets/images/avatar-3.png" alt="María González">
+                        <div class="author-info">
+                            <div class="author-name">María González</div>
+                            <div class="author-location">Monterrey</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Trust Badges -->
+            <div class="trust-badges">
+                <div class="trust-badge">
+                    <i class="fas fa-shield-alt"></i>
+                    <div class="badge-info">
+                        <div class="badge-title">100% Seguro</div>
+                        <div class="badge-subtitle">Profesionales verificados</div>
+                    </div>
+                </div>
+                
+                <div class="trust-badge">
+                    <i class="fas fa-money-back"></i>
+                    <div class="badge-info">
+                        <div class="badge-title">Garantía Total</div>
+                        <div class="badge-subtitle">Satisfacción garantizada</div>
+                    </div>
+                </div>
+                
+                <div class="trust-badge">
+                    <i class="fas fa-headset"></i>
+                    <div class="badge-info">
+                        <div class="badge-title">Soporte 24/7</div>
+                        <div class="badge-subtitle">Siempre estamos aquí</div>
+                    </div>
+                </div>
+                
+                <div class="trust-badge">
+                    <i class="fas fa-clock"></i>
+                    <div class="badge-info">
+                        <div class="badge-title">Respuesta Rápida</div>
+                        <div class="badge-subtitle">Promedio 3 minutos</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download App -->
+    <section class="download-app" id="descargar">
+        <div class="container">
+            <div class="download-content">
+                <div class="download-text">
+                    <h2>Descarga la app ServiMapp</h2>
+                    <p>Lleva ServiMapp contigo. Encuentra servicios y gana dinero desde tu móvil.</p>
+                    
+                    <div class="app-features">
+                        <div class="app-feature">
+                            <i class="fas fa-mobile-alt"></i>
+                            <span>Notificaciones push</span>
+                        </div>
+                        <div class="app-feature">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>GPS en tiempo real</span>
+                        </div>
+                        <div class="app-feature">
+                            <i class="fas fa-camera"></i>
+                            <span>Chat con fotos/videos</span>
+                        </div>
+                        <div class="app-feature">
+                            <i class="fas fa-bell"></i>
+                            <span>Alertas de servicios</span>
+                        </div>
+                    </div>
+                    
+                    <div class="download-buttons">
+                        <a href="#" class="download-btn ios">
+                            <img src="assets/images/app-store.svg" alt="Descargar en App Store">
+                        </a>
+                        <a href="#" class="download-btn android">
+                            <img src="assets/images/google-play.svg" alt="Descargar en Google Play">
+                        </a>
+                    </div>
+                    
+                    <div class="qr-section">
+                        <div class="qr-text">
+                            <i class="fas fa-qrcode"></i>
+                            <span>Escanea para descargar</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="download-visual">
+                    <img src="assets/images/download-phones.png" alt="Apps ServiMapp" class="phones-image">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Sections -->
+    <section class="dual-cta">
+        <div class="container">
+            <div class="cta-grid">
+                <div class="cta-card cta-client">
+                    <div class="cta-content">
+                        <h3>¿Necesitas un servicio?</h3>
+                        <p>Encuentra profesionales verificados cerca de ti en minutos</p>
+                        <ul class="cta-benefits">
+                            <li><i class="fas fa-check"></i> 50,000+ profesionales verificados</li>
+                            <li><i class="fas fa-check"></i> Cotización por videollamada gratis</li>
+                            <li><i class="fas fa-check"></i> Disponibilidad en tiempo real</li>
+                            <li><i class="fas fa-check"></i> Garantía de satisfacción</li>
+                        </ul>
+                        <button class="btn btn-primary btn-large" onclick="openClientModal()">
+                            <i class="fas fa-search"></i>
+                            Buscar Servicios
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="cta-card cta-provider">
+                    <div class="cta-content">
+                        <h3>¿Quieres ganar dinero?</h3>
+                        <p>Únete a miles de profesionales que ya generan ingresos extra</p>
+                        <ul class="cta-benefits">
+                            <li><i class="fas fa-check"></i> Conserva el 90% de tus ganancias</li>
+                            <li><i class="fas fa-check"></i> Clientes verificados automáticamente</li>
+                            <li><i class="fas fa-check"></i> Pagos seguros y puntuales</li>
+                            <li><i class="fas fa-check"></i> Tú eliges cuándo trabajar</li>
+                        </ul>
+                        <button class="btn btn-secondary btn-large" onclick="openProviderModal()">
+                            <i class="fas fa-rocket"></i>
+                            Empezar a Ganar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-brand">
+                        <img src="assets/images/logobaseok.jpg" alt="ServiMapp" class="footer-logo">
+                        <span class="footer-brand-text">ServiMapp</span>
+                    </div>
+                    <p class="footer-description">
+                        El marketplace #1 de servicios locales. Conectando profesionales con clientes desde 2024.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="Facebook">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="LinkedIn">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Para Clientes</h4>
+                    <ul class="footer-links">
+                        <li><a href="#como-funciona">Cómo funciona</a></li>
+                        <li><a href="#servicios">Buscar servicios</a></li>
+                        <li><a href="#">Precios</a></li>
+                        <li><a href="#">Garantía</a></li>
+                        <li><a href="#">Centro de ayuda</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Para Prestadores</h4>
+                    <ul class="footer-links">
+                        <li><a href="#" onclick="openProviderModal()">Registrarse</a></li>
+                        <li><a href="#">Cómo ganar dinero</a></li>
+                        <li><a href="#">Comisiones</a></li>
+                        <li><a href="#">Recursos</a></li>
+                        <li><a href="#">Programa embajadores</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Empresa</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Acerca de nosotros</a></li>
+                        <li><a href="#">Trabaja con nosotros</a></li>
+                        <li><a href="#">Prensa</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Contacto</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contacto</h4>
+                    <div class="contact-info">
+                        <a href="mailto:fernandobillard@gmail.com" class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>fernandobillard@gmail.com</span>
+                        </a>
+                        <a href="https://wa.me/526671038501" class="contact-item" target="_blank">
+                            <i class="fab fa-whatsapp"></i>
+                            <span>+52 667 103 8501</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-legal">
+                    <p>&copy; 2024 ServiMapp. Todos los derechos reservados.</p>
+                    <div class="legal-links">
+                        <a href="#">Términos de servicio</a>
+                        <a href="#">Política de privacidad</a>
+                        <a href="#">Cookies</a>
+                    </div>
+                </div>
+                <div class="footer-stats">
+                    <span>Hecho con <i class="fas fa-heart"></i> para fortalecer comunidades</span>
+                    <span class="admin-access" onclick="showAdminLogin()" title="Acceso administrativo">•</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modals -->
+    <div id="client-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fas fa-search"></i> Buscar Servicios</h3>
+                <button class="modal-close" onclick="closeModal('client-modal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>¡Encuentra el profesional perfecto para tu necesidad!</p>
+                <div class="modal-search">
+                    <input type="text" placeholder="¿Qué servicio necesitas?" class="modal-input">
+                    <input type="text" placeholder="Tu ubicación" class="modal-input">
+                    <button class="btn btn-primary btn-full">
+                        <i class="fas fa-search"></i> Buscar Ahora
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="provider-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fas fa-user-tie"></i> Únete como Prestador</h3>
+                <button class="modal-close" onclick="closeModal('provider-modal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>¡Empieza a ganar dinero con tus habilidades!</p>
+                <div class="provider-benefits">
+                    <div class="benefit-item">
+                        <i class="fas fa-percentage"></i>
+                        <span>Conserva el 90% de tus ganancias</span>
+                    </div>
+                    <div class="benefit-item">
+                        <i class="fas fa-users"></i>
+                        <span>Acceso a miles de clientes</span>
+                    </div>
+                    <div class="benefit-item">
+                        <i class="fas fa-shield-check"></i>
+                        <span>Pagos garantizados</span>
+                    </div>
+                </div>
+                <button class="btn btn-secondary btn-full" onclick="redirectToProviderSignup()">
+                    <i class="fas fa-rocket"></i> Registrarse Gratis
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Login Modal -->
+    <div id="admin-login-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fas fa-shield-alt"></i> Acceso Administrativo</h3>
+                <button class="modal-close" onclick="closeModal('admin-login-modal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="admin-login-form">
+                    <div class="form-group">
+                        <label for="admin-email">Email:</label>
+                        <input type="email" id="admin-email" class="modal-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="admin-password">Contraseña:</label>
+                        <input type="password" id="admin-password" class="modal-input" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full">
+                        <i class="fas fa-sign-in-alt"></i> Acceder
+                    </button>
+                    <div id="login-error" class="error-message" style="display: none;"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div id="loading-overlay" class="loading-overlay" style="display: none;">
+        <div class="loading-spinner">
+            <div class="spinner"></div>
+            <p>Cargando...</p>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/landing.js"></script>
+    <script src="js/admin.js"></script>
+</body>
+</html>
